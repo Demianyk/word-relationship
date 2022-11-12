@@ -13,3 +13,9 @@ By default application is started on port 8080, you can change this by updating 
 
 ## API
 After application is started please refer to http://localhost:8080/swagger-ui/index.html for API details.
+
+# TODO
+Following stuff is desirable for the project but haven't been implemented due to lack of the time:
+ - unit tests;
+ - separate class for transforming between DTOs and model (not is done inside the service class);
+ - more detailed Swagger documentation.
