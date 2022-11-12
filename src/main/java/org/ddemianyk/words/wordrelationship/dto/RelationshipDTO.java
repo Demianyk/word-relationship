@@ -1,8 +1,8 @@
-package org.examddemianyk.words.wordrelationship.dto;
+package org.ddemianyk.words.wordrelationship.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.examddemianyk.words.wordrelationship.model.RelType;
+import org.ddemianyk.words.wordrelationship.model.RelType;
 
 import javax.validation.constraints.NotNull;
 

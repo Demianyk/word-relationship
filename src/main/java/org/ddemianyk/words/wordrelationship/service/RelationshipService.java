@@ -1,12 +1,12 @@
-package org.examddemianyk.words.wordrelationship.service;
+package org.ddemianyk.words.wordrelationship.service;
 
 import lombok.RequiredArgsConstructor;
-import org.examddemianyk.words.wordrelationship.dto.RelationshipDTO;
-import org.examddemianyk.words.wordrelationship.dto.RelationshipDTOWithInverseFlag;
-import org.examddemianyk.words.wordrelationship.exception.WordPairAlreadyExistsException;
-import org.examddemianyk.words.wordrelationship.model.RelType;
-import org.examddemianyk.words.wordrelationship.model.Relationship;
-import org.examddemianyk.words.wordrelationship.repository.RelationshipRepository;
+import org.ddemianyk.words.wordrelationship.dto.RelationshipDTO;
+import org.ddemianyk.words.wordrelationship.exception.WordPairAlreadyExistsException;
+import org.ddemianyk.words.wordrelationship.model.RelType;
+import org.ddemianyk.words.wordrelationship.dto.RelationshipDTOWithInverseFlag;
+import org.ddemianyk.words.wordrelationship.model.Relationship;
+import org.ddemianyk.words.wordrelationship.repository.RelationshipRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

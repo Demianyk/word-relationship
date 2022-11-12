@@ -1,8 +1,8 @@
-package org.examddemianyk.words.wordrelationship.exceptionhandler;
+package org.ddemianyk.words.wordrelationship.exceptionhandler;
 
-import org.examddemianyk.words.wordrelationship.dto.FieldErrorResponseDTO;
-import org.examddemianyk.words.wordrelationship.dto.WordPairExistsErrorDTO;
-import org.examddemianyk.words.wordrelationship.exception.WordPairAlreadyExistsException;
+import org.ddemianyk.words.wordrelationship.dto.WordPairExistsErrorDTO;
+import org.ddemianyk.words.wordrelationship.exception.WordPairAlreadyExistsException;
+import org.ddemianyk.words.wordrelationship.dto.FieldErrorResponseDTO;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;

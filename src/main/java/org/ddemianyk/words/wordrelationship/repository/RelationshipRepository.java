@@ -1,7 +1,7 @@
-package org.examddemianyk.words.wordrelationship.repository;
+package org.ddemianyk.words.wordrelationship.repository;
 
-import org.examddemianyk.words.wordrelationship.model.RelType;
-import org.examddemianyk.words.wordrelationship.model.Relationship;
+import org.ddemianyk.words.wordrelationship.model.RelType;
+import org.ddemianyk.words.wordrelationship.model.Relationship;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

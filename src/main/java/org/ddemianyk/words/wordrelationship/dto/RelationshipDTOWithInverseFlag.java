@@ -1,4 +1,4 @@
-package org.examddemianyk.words.wordrelationship.dto;
+package org.ddemianyk.words.wordrelationship.dto;
 
 import lombok.Getter;
 import lombok.Setter;

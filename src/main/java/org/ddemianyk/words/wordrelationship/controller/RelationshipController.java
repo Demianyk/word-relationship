@@ -1,9 +1,9 @@
-package org.examddemianyk.words.wordrelationship.controller;
+package org.ddemianyk.words.wordrelationship.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.examddemianyk.words.wordrelationship.dto.RelationshipDTO;
-import org.examddemianyk.words.wordrelationship.model.RelType;
-import org.examddemianyk.words.wordrelationship.service.RelationshipService;
+import org.ddemianyk.words.wordrelationship.model.RelType;
+import org.ddemianyk.words.wordrelationship.dto.RelationshipDTO;
+import org.ddemianyk.words.wordrelationship.service.RelationshipService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController

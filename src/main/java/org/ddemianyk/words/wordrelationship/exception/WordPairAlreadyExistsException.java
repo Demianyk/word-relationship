@@ -1,4 +1,4 @@
-package org.examddemianyk.words.wordrelationship.exception;
+package org.ddemianyk.words.wordrelationship.exception;
 
 public class WordPairAlreadyExistsException extends RuntimeException {
     public WordPairAlreadyExistsException(String word1, String word2) {
