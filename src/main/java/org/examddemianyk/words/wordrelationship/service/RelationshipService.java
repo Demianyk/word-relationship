@@ -32,8 +32,8 @@ public class RelationshipService {
         Relationship relationship = new Relationship();
         String id = Stream.of(dto.getW1(), dto.getW2()).sorted().collect(Collectors.joining("+"));
         relationship.setId(id);
-        relationship.setWord1(dto.getW1());
-        relationship.setWord2(dto.getW2());
+        relationship.setWord1(normalizeWord(dto.getW1()));
+        relationship.setWord2(normalizeWord(dto.getW2()));
         relationship.setRelType(dto.getR());
         return relationship;
     }
@@ -44,5 +44,9 @@ public class RelationshipService {
         dto.setW2(relationship.getWord2());
         dto.setR(relationship.getRelType());
         return dto;
+    }
+
+    private static String normalizeWord(String word) {
+     return word.trim().toLowerCase();
     }
 }
