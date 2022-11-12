@@ -4,13 +4,18 @@ import lombok.Getter;
 import lombok.Setter;
 import org.examddemianyk.words.wordrelationship.model.RelType;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 public class RelationshipDTO {
 
-    private String W1;
+    @NotNull(message = "W1 can't be null")
+    private String w1;
 
-    private String W2;
+    @NotNull(message = "W2 can't be null")
+    private String w2;
 
-    private RelType R;
+    @NotNull(message = "R can't be null")
+    private RelType r;
 }
