@@ -23,7 +23,7 @@ public class RelationshipService {
     public void save(RelationshipDTO relationshipDTO) {
         normalizeDTO(relationshipDTO);
         Relationship relationship = toModel(relationshipDTO);
-        validateWordPairUniquiness(relationship);
+        validateWordPairUniqueness(relationship);
         relationshipRepository.save(relationship);
     }
 
@@ -62,7 +62,7 @@ public class RelationshipService {
         return Stream.of(dto.getW1(), dto.getW2()).sorted().collect(Collectors.joining("+"));
     }
 
-    private void validateWordPairUniquiness(Relationship relationship) {
+    private void validateWordPairUniqueness(Relationship relationship) {
         if (relationshipRepository.findById(relationship.getId()).isPresent()) {
             throw new WordPairAlreadyExistsException(relationship.getWord1(), relationship.getWord2());
         }
