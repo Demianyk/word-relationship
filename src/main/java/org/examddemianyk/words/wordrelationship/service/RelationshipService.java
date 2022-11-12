@@ -3,6 +3,7 @@ package org.examddemianyk.words.wordrelationship.service;
 import lombok.RequiredArgsConstructor;
 import org.examddemianyk.words.wordrelationship.dto.RelationshipDTO;
 import org.examddemianyk.words.wordrelationship.exception.WordPairAlreadyExistsException;
+import org.examddemianyk.words.wordrelationship.model.RelType;
 import org.examddemianyk.words.wordrelationship.model.Relationship;
 import org.examddemianyk.words.wordrelationship.repository.RelationshipRepository;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,11 @@ public class RelationshipService {
     @Transactional
     public List<RelationshipDTO> listAll() {
         return relationshipRepository.findAll().stream().map(this::toDTO).collect(toList());
+    }
+
+    @Transactional
+    public List<RelationshipDTO> listForRelType(RelType relType) {
+        return relationshipRepository.findAllByRelType(relType).stream().map(this::toDTO).collect(toList());
     }
 
     private Relationship toModel(RelationshipDTO dto) {

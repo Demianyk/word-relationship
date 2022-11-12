@@ -2,10 +2,12 @@ package org.examddemianyk.words.wordrelationship.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.examddemianyk.words.wordrelationship.dto.RelationshipDTO;
+import org.examddemianyk.words.wordrelationship.model.RelType;
 import org.examddemianyk.words.wordrelationship.service.RelationshipService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +34,10 @@ public class RelationshipController {
     @GetMapping
     public List<RelationshipDTO> listAll() {
         return relationshipService.listAll();
+    }
+
+    @GetMapping("/{relType}")
+    public List<RelationshipDTO> listForRelationshipType(@PathVariable("relType") RelType relType) {
+        return relationshipService.listForRelType(relType);
     }
 }
