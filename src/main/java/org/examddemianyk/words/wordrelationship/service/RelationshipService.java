@@ -2,6 +2,7 @@ package org.examddemianyk.words.wordrelationship.service;
 
 import lombok.RequiredArgsConstructor;
 import org.examddemianyk.words.wordrelationship.dto.RelationshipDTO;
+import org.examddemianyk.words.wordrelationship.exception.WordPairAlreadyExistsException;
 import org.examddemianyk.words.wordrelationship.model.Relationship;
 import org.examddemianyk.words.wordrelationship.repository.RelationshipRepository;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,10 @@ public class RelationshipService {
 
     @Transactional
     public void save(RelationshipDTO relationshipDTO) {
-        relationshipRepository.save(toModel(relationshipDTO));
+        normalizeDTO(relationshipDTO);
+        Relationship relationship = toModel(relationshipDTO);
+        validateWordPairUniquiness(relationship);
+        relationshipRepository.save(relationship);
     }
 
     @Transactional
@@ -30,8 +34,7 @@ public class RelationshipService {
 
     private Relationship toModel(RelationshipDTO dto) {
         Relationship relationship = new Relationship();
-        String id = Stream.of(dto.getW1(), dto.getW2()).sorted().collect(Collectors.joining("+"));
-        relationship.setId(id);
+        relationship.setId(generateId(dto));
         relationship.setWord1(normalizeWord(dto.getW1()));
         relationship.setWord2(normalizeWord(dto.getW2()));
         relationship.setRelType(dto.getR());
@@ -46,7 +49,22 @@ public class RelationshipService {
         return dto;
     }
 
+    private static void normalizeDTO(RelationshipDTO dto) {
+        dto.setW1(normalizeWord(dto.getW1()));
+        dto.setW2(normalizeWord(dto.getW2()));
+    }
+
     private static String normalizeWord(String word) {
      return word.trim().toLowerCase();
+    }
+
+    private static String generateId(RelationshipDTO dto) {
+        return Stream.of(dto.getW1(), dto.getW2()).sorted().collect(Collectors.joining("+"));
+    }
+
+    private void validateWordPairUniquiness(Relationship relationship) {
+        if (relationshipRepository.findById(relationship.getId()).isPresent()) {
+            throw new WordPairAlreadyExistsException(relationship.getWord1(), relationship.getWord2());
+        }
     }
 }

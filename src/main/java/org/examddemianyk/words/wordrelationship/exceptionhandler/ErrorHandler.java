@@ -1,6 +1,8 @@
 package org.examddemianyk.words.wordrelationship.exceptionhandler;
 
-import org.examddemianyk.words.wordrelationship.dto.ErrorResponseDTO;
+import org.examddemianyk.words.wordrelationship.dto.FieldErrorResponseDTO;
+import org.examddemianyk.words.wordrelationship.dto.WordPairExistsErrorDTO;
+import org.examddemianyk.words.wordrelationship.exception.WordPairAlreadyExistsException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -21,11 +23,17 @@ public class ErrorHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public ErrorResponseDTO handleMethodArgumentNotValid(MethodArgumentNotValidException exception) {
-        List<ErrorResponseDTO.ErrorMessageDTO> errorMessages = exception.getBindingResult().getFieldErrors().stream()
-                .map(err -> new ErrorResponseDTO.ErrorMessageDTO(err.getField(), err.getDefaultMessage()))
+    public FieldErrorResponseDTO handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
+        List<FieldErrorResponseDTO.ErrorMessageDTO> errorMessages = exception.getBindingResult().getFieldErrors().stream()
+                .map(err -> new FieldErrorResponseDTO.ErrorMessageDTO(err.getField(), err.getDefaultMessage()))
                 .distinct()
                 .collect(toList());
-        return new ErrorResponseDTO(errorMessages);
+        return new FieldErrorResponseDTO(errorMessages);
+    }
+
+    @ExceptionHandler(WordPairAlreadyExistsException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public WordPairExistsErrorDTO handleWordPairAlreadyExistsException(WordPairAlreadyExistsException exception) {
+        return new WordPairExistsErrorDTO(exception.getMessage());
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class ErrorResponseDTO {
+public class FieldErrorResponseDTO {
 
     private final List<ErrorMessageDTO> errors;
 
